@@ -1,0 +1,68 @@
+{
+  "validation": [
+    {
+      "model": "Baseline (prior rate)",
+      "roc_auc": 0.5,
+      "pr_auc": 0.11308106753539657,
+      "brier": 0.10029503818943468,
+      "positive_rate": 0.11308106753539657
+    },
+    {
+      "model": "Logistic regression",
+      "roc_auc": 0.6514514221892717,
+      "pr_auc": 0.19832186973212548,
+      "brier": 0.0971650649669293,
+      "positive_rate": 0.11308106753539657
+    },
+    {
+      "model": "LightGBM (tuned)",
+      "roc_auc": 0.6693544906085829,
+      "pr_auc": 0.213962546521974,
+      "brier": 0.09610324163290326,
+      "positive_rate": 0.11308106753539657
+    }
+  ],
+  "test": {
+    "Logistic regression": {
+      "roc_auc": 0.6637941922369744,
+      "pr_auc": 0.21522506518608567,
+      "brier": 0.09649017823454262,
+      "positive_rate": 0.11348808981945077
+    },
+    "LightGBM (tuned)": {
+      "roc_auc": 0.6780963128175983,
+      "pr_auc": 0.23248665678730246,
+      "brier": 0.09556976123843061,
+      "positive_rate": 0.11348808981945077
+    },
+    "LightGBM (tuned) + calibration": {
+      "roc_auc": 0.6780963128175983,
+      "pr_auc": 0.23248665678730246,
+      "brier": 0.09553582333782482,
+      "positive_rate": 0.11348808981945077
+    }
+  },
+  "business": {
+    "threshold": 0.17,
+    "flagged": 2996,
+    "flagged_pct": 0.15151974915288524,
+    "true_positives": 721,
+    "readmissions_prevented": 180.25,
+    "net_savings": 906150.0,
+    "net_savings_per_1000_patients": 45827.64375663784,
+    "precision": 0.24065420560747663,
+    "recall": 0.321301247771836
+  },
+  "flag_everyone": {
+    "threshold": 0.0,
+    "flagged": 19773,
+    "flagged_pct": 1.0,
+    "true_positives": 2244,
+    "readmissions_prevented": 561.0,
+    "net_savings": -3448800.0,
+    "net_savings_per_1000_patients": -174419.6631770596,
+    "precision": 0.11348808981945077,
+    "recall": 1.0
+  },
+  "top_decile_lift": 2.4100202494822724
+}

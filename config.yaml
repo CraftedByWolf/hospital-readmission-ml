@@ -1,0 +1,26 @@
+# Central configuration for the readmission pipeline.
+data:
+  url: "https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip"
+  raw_dir: data/raw
+  raw_file: diabetic_data.csv
+  processed_dir: data/processed
+
+split:
+  test_size: 0.20      # held-out patients, touched once for the final report
+  valid_size: 0.20     # of the remaining patients; used for model selection + threshold
+  random_state: 42
+
+tuning:
+  n_iter: 25           # random-search candidates for LightGBM
+  cv_folds: 4          # patient-grouped folds
+
+# Business assumptions used to pick the decision threshold.
+# Change these to match your hospital; the threshold is re-optimised on every run.
+business:
+  readmission_cost: 15000      # USD, average cost of one 30-day readmission
+  intervention_cost: 600       # USD, transitional-care programme per flagged patient
+  intervention_success: 0.25   # fraction of true readmissions the programme prevents
+
+paths:
+  models_dir: models
+  reports_dir: reports
